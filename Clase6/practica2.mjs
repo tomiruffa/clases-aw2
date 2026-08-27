@@ -28,12 +28,20 @@ const productos = [
 ]
 
 //
-const productosConInteres = productos.map((producto)=>{
-    const productoCambiado = {
-        nombre: producto.nombre,
-        precio: producto.precio * 1.1
-    }
-    return productoCambiado
+// const productosConInteres = productos.map((producto)=>{
+//     const productoCambiado = {
+//         nombre: producto.nombre,
+//         precio: producto.precio * 1.1
+//     }
+//     return productoCambiado
+// })
+
+// console.log(productosConInteres)
+
+//  nuevo arreglo
+const productosFiltrados = productos.filter(()=>{
+    return Number(productos.precio) < 100   
 })
 
-console.log(productosConInteres)
+console.log(productosFiltrados)
+
