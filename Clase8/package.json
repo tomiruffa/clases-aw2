@@ -1,5 +1,5 @@
 {
-  "name": "Clase7",
+  "name": "clases-aw2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,11 +12,14 @@
   "license": "ISC",
   "devEngines": {
     "packageManager": {
-      "name": "ppnm",
+      "name": "pnpm",
       "version": "11.25.0",
       "onFail": "download"
     }
   },
   "packageManager": "pnpm@11.25.0",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "express": "5.2.1"
+  }
 }
