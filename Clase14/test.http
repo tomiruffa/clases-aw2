@@ -1,0 +1,5 @@
+### GET todos los productos
+GET https://6aab1be4ea0e22daa6dbcb90.mockapi.io/api/productos
+
+### GET un producto
+GET https://6aab1be4ea0e22daa6dbcb90.mockapi.io/api/productos/platense-2024-titular
