@@ -1,0 +1,74 @@
+[
+  { "id": 1,
+  "nombre": "Medialuna de manteca",
+  "categoria": "laminados",
+  "precio": 1200,
+  "stock": 120
+  },
+  { "id": 2,
+  "nombre": "Medialuna de grasa",
+  "categoria": "laminados",
+  "precio": 950,
+  "stock": 150
+  },
+  { "id": 3,
+  "nombre": "Croissant clasico",
+  "categoria": "laminados",
+  "precio": 2800,
+  "stock": 60  
+  },
+  { "id": 4,
+  "nombre": "Pan de chocolate",
+  "categoria": "laminados",
+  "precio": 3500,
+  "stock": 45   
+  },
+  { "id": 5,
+  "nombre": "Palmera de hojaldre", 
+  "categoria": "laminados",
+  "precio": 1800,
+  "stock": 80  
+  },
+  { "id": 6,
+  "nombre": "Cañón de dulce de leche",
+  "categoria": "laminados",
+  "precio": 2200,
+  "stock": 40  
+  },
+  { "id": 7,
+  "nombre": "Pan de campo",
+  "categoria": "panes",
+  "precio": 4200,
+  "stock": 30  
+  },
+  { "id": 8,
+  "nombre": "Baguette",
+  "categoria": "panes",
+  "precio": 3000,
+  "stock": 35  
+  },
+  { "id": 9,
+  "nombre": "Pan de miga",
+  "categoria": "panes",
+  "precio": 6500,
+  "stock": 20  
+  },
+  { "id": 10,
+  "nombre": "Alfajor de maicena",
+  "categoria": "dulces",
+  "precio": 1500,
+  "stock": 90  
+  },
+  { "id": 11,
+  "nombre": "Budín de limón",
+  "categoria": "dulces",
+  "precio": 5200,
+  "stock": 18  
+  },
+  { "id": 12,
+  "nombre": "Tarta de ricota",
+  "categoria": "dulces",
+  "precio": 3900,
+  "stock": 25  
+  }
+]

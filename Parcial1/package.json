@@ -1,8 +1,8 @@
 {
-  "name": "Parcial 1",
+  "name": "parcial1-aw2-panaderia",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Parcial 1 AW2 - Back-end Express: API REST v1 de productos de panadería + endpoint de procedimiento + middleware propio",
+  "main": "index.mjs",
   "scripts": {
     "dev": "node --watch index.mjs",
     "start": "node index.mjs"
@@ -10,14 +10,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "12.8.1",
-      "onFail": "download"
-    }
-  },
-  "packageManager": "pnpm@12.8.1",
   "type": "module",
   "dependencies": {
     "express": "^5.2.1"

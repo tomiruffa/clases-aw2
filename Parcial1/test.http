@@ -1,0 +1,8 @@
+### GET todos los productos
+GET http://localhost:3000/api/v1/productos
+
+### GET producto por ID
+GET http://localhost:3000/api/v1/productos/1
+
+### GET procedimiento
+GET http://localhost:3000/procedimientos/calcular-valor-inventario?descuento=15
