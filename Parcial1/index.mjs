@@ -29,7 +29,6 @@ app.get(
 )
 
 
-
 // Manejo de errores
 app.use(rutaNoEncontrada)
 app.use(manejarErrores)
