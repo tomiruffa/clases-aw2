@@ -1,21 +1,21 @@
-// conecta el modelo con la respuesta al cliente 
-import modelo from './productos.modelo.mjs'
+// API REST: conecta los datos con la respuesta al cliente
+import * as datos from './datos.mjs'
 
 // GET /api/v1/productos
-async function obtenerProductos(req, res) {
+export async function obtenerProductos(req, res) {
     try {
-        const productos = await modelo.obtenerProductos()
+        const productos = await datos.obtenerProductos()
         res.status(200).json(productos)
     } catch (error) {
         console.error(error)
-        
+
         res.status(500).json({ mensaje: 'Error al obtener los productos' })
     }
 }
 
 // GET /api/v1/productos/:id
-async function obtenerProducto(req, res) {
-    
+export async function obtenerProducto(req, res) {
+
     const id = Number(req.params.id)
 
     // Si el id no es un entero positivo, la petición está mal hecha (400)
@@ -24,7 +24,7 @@ async function obtenerProducto(req, res) {
     }
 
     try {
-        const producto = await modelo.obtenerProducto(id)
+        const producto = await datos.obtenerProducto(id)
         if (producto) {
             res.status(200).json(producto)
         } else {
@@ -35,5 +35,3 @@ async function obtenerProducto(req, res) {
         res.status(500).json({ mensaje: 'Error al obtener el producto' })
     }
 }
-
-export default { obtenerProductos, obtenerProducto }

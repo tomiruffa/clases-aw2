@@ -1,11 +1,11 @@
 // Procedimiento elegido: calcular el valor del inventario (precio * stock de cada producto),
 // con un descuento opcional que llega por query string.
-// Queda fuera de la API REST porque la ruta es una acción y no un recurso 
-import productosModelo from './productos.modelo.mjs'
+// Queda fuera de la API REST porque la ruta es una acción y no un recurso
+import * as datos from './datos.mjs'
 
 // calcula y deja el resultado en res.locals
-async function calcularValorInventario(req, res, next) {
-    
+export async function calcularValorInventario(req, res, next) {
+
     const url = new URL(req.originalUrl, `http://${req.headers.host}`)
     const parametro = url.searchParams.get('descuento') // null si no viene
 
@@ -17,7 +17,7 @@ async function calcularValorInventario(req, res, next) {
     }
 
     try {
-        const productos = await productosModelo.obtenerProductos()
+        const productos = await datos.obtenerProductos()
 
         let valorTotal = 0
         const detalle = []
@@ -59,8 +59,6 @@ async function calcularValorInventario(req, res, next) {
 }
 
 // Último paso de la cadena: responde al cliente
-function responderResultado(req, res) {
+export function responderResultado(req, res) {
     res.status(200).json(res.locals.resultado)
 }
-
-export default { calcularValorInventario, responderResultado }

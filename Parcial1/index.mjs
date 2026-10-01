@@ -1,11 +1,9 @@
-// crea el servidor y define los endpoints 
+// crea el servidor y define los endpoints
 import express from 'express'
 import config from './modulos/config.mjs'
-import { habilitarCors } from './modulos/cors.middleware.mjs'
-import { guardarResultado } from './modulos/guardar-resultado.middleware.mjs'
-import { rutaNoEncontrada, manejarErrores } from './modulos/errores.middleware.mjs'
-import productos from './modulos/productos.controlador.mjs'
-import procedimientos from './modulos/procedimientos.controlador.mjs'
+import { habilitarCors, guardarResultado, rutaNoEncontrada, manejarErrores } from './modulos/middlewares.mjs'
+import * as productos from './modulos/productos.mjs'
+import * as inventario from './modulos/inventario.mjs'
 
 const app = express()
 
@@ -19,14 +17,14 @@ app.get(config.rutaApi, productos.obtenerProductos)
 app.get(`${config.rutaApi}/:id`, productos.obtenerProducto)
 
 
-// Procedimiento, fuera de la API REST 
+// Procedimiento, fuera de la API REST
 app.get(
     config.rutaProcedimiento,
-    procedimientos.calcularValorInventario, 
-    guardarResultado,                       
-    procedimientos.responderResultado,     
-
+    inventario.calcularValorInventario,
+    guardarResultado,
+    inventario.responderResultado,
 )
+
 
 
 // Manejo de errores
