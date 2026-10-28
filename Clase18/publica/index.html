@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MULTER</title>
+</head>
+<body>
+    <form action="/subir" method="post" enctype="multipart/form-data">
+        <label for="id-producto">
+            Producto
+            <input type="text" name="producto" id="id-producto">
+        </label>
+        <br>
+        <label for="id-precio">
+            Precio
+            <input type="number" name="precio" id="id-precio">
+        </label>
+        <br>
+        <label for="id-archivo">
+            Archivo
+            <input type="file" name="archivo" id="id-archivo">
+        </label>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
