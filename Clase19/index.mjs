@@ -1,6 +1,6 @@
 import express from 'express'
 import path from 'node:path'
-import cookieParser, { signedCookie, signedCookies } from 'cookie-parser'
+import cookieParser from 'cookie-parser'
 
 const tablaUsuarios ={
     nombre:'admin',
@@ -12,8 +12,10 @@ const PUERTO = 3000
 const app = express()
 
 app.listen(PUERTO)
-app.use(express.urlencoded({extended:true}))
+//
 app.use(cookieParser('palabra-clave'));
+//
+app.use(express.urlencoded({extended:true}))
 
 app.post('/autentication',(req, res)=>{
     console.log(req.body)
@@ -25,22 +27,22 @@ app.post('/autentication',(req, res)=>{
             httpOnly: true,
             secure: true,
             sameSite: 'lax',
-            signed: (signedCookies),
-            maxAge: 1000 * 10
+            signed: true,
+            maxAge: 1000 * 60 * 60 * 24
         })
         return res.redirect('/admin')
     }
     res.redirect('/login')
 })
 
-//Estaticos
+//Estáticos
 function verificarCookie(req, res, next){
-    console.log(req.cookies)
+    console.log(req.signedCookies)
     if(req.cookies.sesionId === '123456'){
         return next()
     }
-    res.redirect('/login?estado=autorizado=false')
+    res.redirect('/login/?autorizado=false')
 }
 
-app.use('/admin', express.static(path.resolve('.front')))
+app.use('/admin',verificarCookie, express.static(path.resolve('/.front')))
 app.use('/login', express.static(path.resolve('.login')))
