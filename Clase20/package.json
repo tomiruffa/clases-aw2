@@ -1,0 +1,29 @@
+{
+  "name": "Clase_21",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.16.1",
+      "onFail": "download"
+    }
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "nanoid": "^6.0.2",
+    "pg": "^8.23.1"
+  },
+  "packageManager": "pnpm@12.16.1",
+  "type": "module"
+}
