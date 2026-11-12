@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Iniciar sesión · Clementina</title>
+        <link rel="stylesheet" href="/recursos/css/estilos.css" />
+        <script type="module" src="/login/login.js"></script>
+    </head>
+    <body>
+        <header class="encabezado">
+            <a class="marca" href="/app/">Clementina <span>· panel</span></a>
+            <nav class="menu" aria-label="Menú principal">
+                <a href="/login/" aria-current="page">Login</a>
+                <a href="/app/items.html">Ítems</a>
+                <a href="/app/item.html">Ítem</a>
+                <a href="/app/procedimiento.html">Procedimiento</a>
+                <a class="menu__salir" href="/cerrar-sesion">Cerrar sesión</a>
+            </nav>
+        </header>
+        <main class="contenido">
+            <section class="login tarjeta">
+                <h1>Iniciar sesión</h1>
+                <p class="bajada">Ingresá con tu usuario para acceder al panel.</p>
+                <p id="mensaje" class="aviso oculto" role="alert"></p>
+                <form action="/autenticacion" method="post">
+                    <div>
+                        <label for="usuario">Usuario</label>
+                        <input type="text" id="usuario" name="usuario" autocomplete="username" required autofocus />
+                    </div>
+                    <div>
+                        <label for="clave">Contraseña</label>
+                        <input type="password" id="clave" name="clave" autocomplete="current-password" required />
+                    </div>
+                    <button class="boton" type="submit">Ingresar</button>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>

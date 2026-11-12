@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Procedimiento · Clementina</title>
+        <link rel="stylesheet" href="/recursos/css/estilos.css" />
+        <script type="module" src="js/procedimiento.js"></script>
+    </head>
+    <body>
+        <header class="encabezado">
+            <a class="marca" href="/app/">Clementina <span>· panel</span></a>
+            <nav class="menu" aria-label="Menú principal">
+                <a href="/login/">Login</a>
+                <a href="/app/items.html">Ítems</a>
+                <a href="/app/item.html">Ítem</a>
+                <a href="/app/procedimiento.html" aria-current="page">Procedimiento</a>
+                <a class="menu__salir" href="/cerrar-sesion">Cerrar sesión</a>
+            </nav>
+        </header>
+        <main class="contenido">
+            <h1>Procedimiento: valor del inventario</h1>
+
+            <section class="explicacion tarjeta">
+                <h2>¿Qué hace?</h2>
+                <p>
+                    Recorre todos los productos de la panadería y calcula cuánto dinero representa
+                    la mercadería en stock: para cada producto multiplica <strong>precio × stock</strong>
+                    y suma todos los resultados.
+                </p>
+                <p>
+                    Opcionalmente podés indicar un <strong>porcentaje de descuento</strong> (de 0 a 100)
+                    para ver el valor del inventario si se vendiera con esa rebaja. Si lo dejás vacío se usa 0&nbsp;%.
+                </p>
+                <p>
+                    Cada ejecución queda <strong>guardada en la base de datos</strong> como historial.
+                    Endpoint: <code>GET /procedimientos/calcular-valor-inventario?descuento=N</code>
+                </p>
+            </section>
+
+            <form id="formulario" class="tarjeta formulario-linea">
+                <div class="campo">
+                    <label for="descuento">Descuento (%) — opcional</label>
+                    <input type="number" id="descuento" name="descuento" min="0" max="100" step="0.01" placeholder="0" />
+                </div>
+                <button id="boton-ejecutar" class="boton" type="submit">Ejecutar procedimiento</button>
+            </form>
+            <p id="estado" class="aviso oculto" role="status"></p>
+
+            <section id="resultado" class="oculto">
+                <div class="resumen">
+                    <div class="tarjeta"><div class="resumen__dato">Productos procesados</div><div id="cantidad" class="resumen__valor"></div></div>
+                    <div class="tarjeta"><div class="resumen__dato">Valor total</div><div id="valor-total" class="resumen__valor"></div></div>
+                    <div class="tarjeta"><div class="resumen__dato">Valor con descuento</div><div id="valor-descuento" class="resumen__valor"></div></div>
+                    <div class="tarjeta"><div class="resumen__dato">Registro guardado</div><div id="registro" class="resumen__valor"></div></div>
+                </div>
+                <div class="tabla-contenedor tarjeta">
+                    <table>
+                        <caption class="oculto">Detalle por producto</caption>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Producto</th>
+                                <th class="numero">Precio</th>
+                                <th class="numero">Stock</th>
+                                <th class="numero">Valor en stock</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detalle"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

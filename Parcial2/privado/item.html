@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ítem · Clementina</title>
+        <link rel="stylesheet" href="/recursos/css/estilos.css" />
+        <script type="module" src="js/item.js"></script>
+    </head>
+    <body>
+        <header class="encabezado">
+            <a class="marca" href="/app/">Clementina <span>· panel</span></a>
+            <nav class="menu" aria-label="Menú principal">
+                <a href="/login/">Login</a>
+                <a href="/app/items.html">Ítems</a>
+                <a href="/app/item.html" aria-current="page">Ítem</a>
+                <a href="/app/procedimiento.html">Procedimiento</a>
+                <a class="menu__salir" href="/cerrar-sesion">Cerrar sesión</a>
+            </nav>
+        </header>
+        <main class="contenido">
+            <h1>Ítem</h1>
+            <p class="bajada">Consulta de un producto por id (<code>GET /api/v1/productos/:id</code>).</p>
+            <form class="tarjeta formulario-linea" action="item.html" method="get">
+                <div class="campo">
+                    <label for="id">Id del producto</label>
+                    <input type="number" id="id" name="id" min="1" step="1" required />
+                </div>
+                <button class="boton" type="submit">Buscar</button>
+            </form>
+
+            <p id="estado" class="aviso aviso--info" role="status">Elegí un producto desde <a href="items.html">Ítems</a> o ingresá su id.</p>
+            <article id="ficha" class="ficha tarjeta oculto"></article>
+        </main>
+    </body>
+</html>

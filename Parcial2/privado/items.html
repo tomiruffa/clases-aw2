@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ítems · Clementina</title>
+        <link rel="stylesheet" href="/recursos/css/estilos.css" />
+        <script type="module" src="js/items.js"></script>
+    </head>
+    <body>
+        <header class="encabezado">
+            <a class="marca" href="/app/">Clementina <span>· panel</span></a>
+            <nav class="menu" aria-label="Menú principal">
+                <a href="/login/">Login</a>
+                <a href="/app/items.html" aria-current="page">Ítems</a>
+                <a href="/app/item.html">Ítem</a>
+                <a href="/app/procedimiento.html">Procedimiento</a>
+                <a class="menu__salir" href="/cerrar-sesion">Cerrar sesión</a>
+            </nav>
+        </header>
+        <main class="contenido">
+            <h1>Ítems</h1>
+            <p class="bajada">Productos de la panadería obtenidos de la API (<code>GET /api/v1/productos</code>).</p>
+
+            <p id="estado" class="cargando" role="status">Cargando productos…</p>
+            <div id="grilla" class="grilla"></div>
+        </main>
+    </body>
+</html>

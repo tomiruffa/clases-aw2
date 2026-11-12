@@ -1,0 +1,51 @@
+# ============================================================
+# Pruebas con REST Client (VS Code).
+# REST Client guarda las cookies entre peticiones, así que después de
+# ejecutar el LOGIN las demás peticiones viajan con la cookie "token".
+# ============================================================
+@base = http://localhost:3000
+
+### 1) SIN SESIÓN: la API responde 401
+GET {{base}}/api/v1/productos
+
+### 2) SIN SESIÓN: el procedimiento responde 401
+GET {{base}}/procedimientos/calcular-valor-inventario
+
+### 3) LOGIN con credenciales incorrectas -> redirige a /login/?error=credenciales
+POST {{base}}/autenticacion
+Content-Type: application/x-www-form-urlencoded
+
+usuario=admin&clave=incorrecta
+
+### 4) LOGIN correcto (admin / admin123) -> Set-Cookie: token=... y redirige a /app/
+POST {{base}}/autenticacion
+Content-Type: application/x-www-form-urlencoded
+
+usuario=admin&clave=admin123
+
+### 5) GET todos los productos
+GET {{base}}/api/v1/productos
+
+### 6) GET producto por ID
+GET {{base}}/api/v1/productos/1
+
+### 7) GET producto inexistente -> 404
+GET {{base}}/api/v1/productos/999
+
+### 8) GET producto con id inválido -> 400
+GET {{base}}/api/v1/productos/abc
+
+### 9) GET procedimiento (sin descuento)
+GET {{base}}/procedimientos/calcular-valor-inventario
+
+### 10) GET procedimiento con descuento del 15 %
+GET {{base}}/procedimientos/calcular-valor-inventario?descuento=15
+
+### 11) GET procedimiento con descuento inválido -> 400
+GET {{base}}/procedimientos/calcular-valor-inventario?descuento=150
+
+### 12) CERRAR SESIÓN: el servidor elimina la cookie
+GET {{base}}/cerrar-sesion
+
+### 13) Después de cerrar sesión vuelve a responder 401
+GET {{base}}/api/v1/productos

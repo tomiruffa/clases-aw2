@@ -1,0 +1,15 @@
+/// Desde la carpeta bd/
+
+/// Crear la imagen
+docker build -t imagen_admin .
+
+/// Instanciar un contenedor a partir de la imagen
+docker run --name contenedor_admin -e POSTGRES_USER=root -e POSTGRES_PASSWORD=pass -e POSTGRES_DB=admin -p 5432:5432 -d imagen_admin
+
+/// Verificar las tablas
+docker exec -it contenedor_admin bash
+psql -U root -d admin --password
+
+admin=# SELECT * FROM usuarios;
+admin=# SELECT * FROM productos;
+admin=# SELECT * FROM resultados_procedimiento;
