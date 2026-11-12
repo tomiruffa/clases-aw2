@@ -1,48 +1,47 @@
-import express from 'express'
-import path from 'node:path'
-import cookieParser from 'cookie-parser'
+import express from "express";
+import path from "node:path";
+import cookieParser from "cookie-parser";
 
-const tablaUsuarios ={
-    nombre:'admin',
-    pass:'123456'
+const PORT = 3000;
+
+const app = express();
+
+const tablaUsuario = {
+  nombre: "admin",
+  pass: "123",
+};
+
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en puerto ${PORT}`);
+});
+
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+
+app.post("/autenticacion", (req, res) => {
+  const { usuario, pass } = req.body;
+  if (usuario === tablaUsuario.nombre && pass === tablaUsuario.pass) {
+    // Cookie
+    res.cookie("sessionId", 123456, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      maxAge: 1000 * 10, // Milisegundos
+    });
+
+    return res.redirect("/admin");
+  }
+  res.redirect("/login");
+});
+
+// Estaticos
+function verificarCookie(req, res, next) {
+  console.log(req.cookies);
+  if (req.cookies.sessionId === "123456") {
+    return next();
+  }
+  res.redirect("/login?autorizado=false");
 }
 
-const PUERTO = 3000
-
-const app = express()
-
-app.listen(PUERTO)
-//
-app.use(cookieParser('palabra-clave'));
-//
-app.use(express.urlencoded({extended:true}))
-
-app.post('/autentication',(req, res)=>{
-    console.log(req.body)
-    const {usuario, pass} = req.body
-    //chequeamos datos
-    if(usuario === tablaUsuarios.nombre && pass === tablaUsuarios.pass){
-        //cookie
-        res.cookie('sesionId',123456,{
-            httpOnly: true,
-            secure: true,
-            sameSite: 'lax',
-            signed: true,
-            maxAge: 1000 * 60 * 60 * 24
-        })
-        return res.redirect('/admin')
-    }
-    res.redirect('/login')
-})
-
-//Estáticos
-function verificarCookie(req, res, next){
-    console.log(req.signedCookies)
-    if(req.cookies.sesionId === '123456'){
-        return next()
-    }
-    res.redirect('/login/?autorizado=false')
-}
-
-app.use('/admin',verificarCookie, express.static(path.resolve('/.front')))
-app.use('/login', express.static(path.resolve('.login')))
+app.use("/admin", verificarCookie, express.static(path.resolve("./front")));
+app.use("/login", express.static(path.resolve("./login")));
